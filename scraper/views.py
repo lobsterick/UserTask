@@ -30,6 +30,7 @@ class WebsiteListView(ListView):
         context = super(WebsiteListView, self).get_context_data(**kwargs)
         context['category'] = self.request.GET.get('category')
         context['order_by'] = self.request.GET.get('order_by', 'id')
+        context['categories'] = WebsiteCategory.objects.all()
         return context
 
 

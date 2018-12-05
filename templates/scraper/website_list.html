@@ -12,11 +12,9 @@
 {% if website_list %}
     <h1>All website's</h1>
     <select>
-    {% for obj in website_list %}
-        <p>{{ obj.id }}</p>
-    {% for category in obj.category_set.all %}
-        <option value="">Category: {{ category.name}}</option>
-    {% endfor %}
+    {% for category in categories %}
+    <option>{{ category.name }}</option>
+
     {% endfor %}
     </select>
     <table class="table" id="movie">
