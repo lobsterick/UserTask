@@ -16,6 +16,15 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
+            <th scope="col">URL</th>
+            <th scope="col">Meta_desc</th>
+            <th scope="col">Alexa Rank</th>
+            <th scope="col">URL</th>
+            <th scope="col">Category</th>
+            <th scope="col">Date_add</th>
+            <th scope="col">Date_updated</th>
+
+
         </tr>
         </thead>
         <tbody>
@@ -24,6 +33,12 @@
             <tr>
                 <td>{{ website.id }}</td>
                 <td>{{ website.title }}</td>
+                <td>{{ website.url }}</td>
+                <td>{{ website.meta_description }}</td>
+                <td>{{ website.alexa_rank }}</td>
+                <td>{{ website.category }}</td>
+                <td>{{ website.date_added }}</td>
+                <td>{{ website.date_updated }}</td>
             </tr>
         {% endfor %}
         </tbody>
