@@ -6,7 +6,7 @@ class WebsiteListView(ListView):
     # queryset = Website.objects.all()
     template_name = 'scraper/website_list.html'
     context_object_name = "website_list"
-    paginate_by = 8
+    paginate_by = 2
 
     # #working
     # def get_ordering(self):
@@ -14,11 +14,11 @@ class WebsiteListView(ListView):
     #     return ordering
 
     def get_queryset(self):
-        if self.request.GET.get('filter'):
-            filter_val = self.request.GET.get('filter')
+        if self.request.GET.get('category'):
+            filter_val = self.request.GET.get('category')
             order = self.request.GET.get('order_by', 'id')
             new_context = Website.objects.filter(
-                category=filter_val,
+                category__name=filter_val,
                 ).order_by(order)
             return new_context
         else:
@@ -28,7 +28,7 @@ class WebsiteListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(WebsiteListView, self).get_context_data(**kwargs)
-        context['filter'] = self.request.GET.get('filter')
+        context['category'] = self.request.GET.get('category')
         context['order_by'] = self.request.GET.get('order_by', 'id')
         return context
 

@@ -11,18 +11,25 @@
 <body>
 {% if website_list %}
     <h1>All website's</h1>
-    
+    <select>
+    {% for obj in website_list %}
+        <p>{{ obj.id }}</p>
+    {% for category in obj.category_set.all %}
+        <option value="">Category: {{ category.name}}</option>
+    {% endfor %}
+    {% endfor %}
+    </select>
     <table class="table" id="movie">
         <thead>
         <tr>
-            <th scope="col"><a href="?order_by=id">#</a></th>
-            <th scope="col"><a href="?order_by=title">Title</a></th>
-            <th scope="col"><a href="?order_by=url">URL</a></th>
-            <th scope="col"><a href="?order_by=meta_description">Meta_desc</a></th>
-            <th scope="col"><a href="?order_by=alexa_rank">Alexa Rank</a></th>
-            <th scope="col"><a href="?order_by=category">Category</a></th>
-            <th scope="col"><a href="?order_by=date_added">Date_add</a></th>
-            <th scope="col"><a href="?order_by=date_updated">Date_updated</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=id>#</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=title>Title</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=url>URL</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=meta_description>Meta_desc</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=alexa_rank>Alexa Rank</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=category>Category</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=date_added>Date_add</a></th>
+            <th scope="col"><a href={% url "WebsiteListView" %}?order_by=date_updated>Date_updated</a></th>
         </tr>
         </thead>
         <tbody>
@@ -45,13 +52,13 @@
         <div class="pagination">
             <span class="page-links">
                 {% if page_obj.has_previous %}
-                    <a href="/scraper/websites?page={{ page_obj.previous_page_number }}">previous</a>
+                    <a href="/websites/?page={{ page_obj.previous_page_number }}">previous</a>
                 {% endif %}
                 <span class="page-current">
                     Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                 </span>
                 {% if page_obj.has_next %}
-                    <a href="/scraper/websites?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="/websites/?page={{ page_obj.next_page_number }}">next</a>
                 {% endif %}
             </span>
         </div>
