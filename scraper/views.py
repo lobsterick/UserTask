@@ -3,15 +3,9 @@ from .models import *
 
 
 class WebsiteListView(ListView):
-    # queryset = Website.objects.all()
     template_name = 'scraper/website_list.html'
     context_object_name = "website_list"
-    paginate_by = 2
-
-    # #working
-    # def get_ordering(self):
-    #     ordering = self.request.GET.get('order_by', 'id')
-    #     return ordering
+    paginate_by = 3
 
     def get_queryset(self):
         if self.request.GET.get('category'):
@@ -19,7 +13,7 @@ class WebsiteListView(ListView):
             order = self.request.GET.get('order_by', 'id')
             new_context = Website.objects.filter(
                 category__name=filter_val,
-                ).order_by(order)
+            ).order_by(order)
             return new_context
         else:
             order = self.request.GET.get('order_by', 'id')
