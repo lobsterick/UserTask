@@ -36,7 +36,7 @@
         {% for website in website_list %}
             <tr>
                 <td>{{ website.id }}</td>
-                <td>{{ website.title }}</td>
+                <td><a href="{% url "WebsiteListView" %}{{ website.id }}">{{ website.title }}</a></td>
                 <td>{{ website.url }}</td>
                 <td>{{ website.meta_description }}</td>
                 <td>{{ website.alexa_rank }}</td>
