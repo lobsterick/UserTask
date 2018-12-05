@@ -17,7 +17,7 @@ http://127.0.0.1:8000/websites/?order_by=alexa_rank&category=Search&page=1
 - detail view - ZROBIONO
 - create view - ZROBIONO
 3. Widoki dla categories:
-- list view
+- list view - ZROBIONO
 - create view
 4. Skrypt odczytujący z CSV oraz tworzący obiekty - ZROBIONY
 5. Scraper dla stron WWW z bazy danych - ZROBIONY
