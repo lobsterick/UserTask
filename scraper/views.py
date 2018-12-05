@@ -42,3 +42,8 @@ class WebsiteCategoryListView(ListView):
     context_object_name = "category_list"
     queryset = WebsiteCategory.objects.all().order_by("id")
     paginate_by = 2
+
+    def get_context_data(self, **kwargs):
+        context = super(WebsiteCategoryListView, self).get_context_data(**kwargs)
+        context['counter'] = WebsiteCategory.objects.all().count()
+        return context

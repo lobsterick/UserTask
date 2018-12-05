@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All Movies</title>
+    <title>All categories</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
@@ -10,7 +10,7 @@
 </head>
 <body>
 {% if category_list %}
-    <h1>All categories</h1>
+    <h1>All categories ({{ counter }})</h1>
     <table class="table" id="movie">
         <thead>
         <tr>
@@ -19,7 +19,6 @@
             <th scope="col">Description</th>
             <th scope="col">Addition date</th>
             <th scope="col">Update date</th>
-            <th scope="col">Number of Positions</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +30,6 @@
                 <td>{{ category.description }}</td>
                 <td>{{ category.date_added }}</td>
                 <td>{{ category.date_updated }}</td>
-                <td>{{ category.count }}</td>
             </tr>
         {% endfor %}
         </tbody>
