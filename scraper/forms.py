@@ -1,5 +1,5 @@
 from django import forms
-from .models import Website
+from .models import Website, WebsiteCategory
 
 
 class WebsiteModelForm(forms.ModelForm):
@@ -11,4 +11,13 @@ class WebsiteModelForm(forms.ModelForm):
             "meta_description",
             "alexa_rank",
             "category"
+        ]
+
+
+class WebsiteCategoryModelForm(forms.ModelForm):
+    class Meta:
+        model = WebsiteCategory
+        fields = [
+            "name",
+            "description",
         ]

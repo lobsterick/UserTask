@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView
-from .models import *
 from .forms import *
+from django.urls import reverse_lazy
 
 
 class WebsiteListView(ListView):
@@ -47,3 +47,9 @@ class WebsiteCategoryListView(ListView):
         context = super(WebsiteCategoryListView, self).get_context_data(**kwargs)
         context['counter'] = WebsiteCategory.objects.all().count()
         return context
+
+
+class WebsiteCategoryCreateView(CreateView):
+    template_name = "scraper/category_form.html"
+    form_class = WebsiteCategoryModelForm
+    success_url = reverse_lazy("WebsiteCategoryListView")
