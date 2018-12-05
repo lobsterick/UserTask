@@ -1,9 +1,9 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import *
+from .forms import *
 
 
 class WebsiteListView(ListView):
-    template_name = 'scraper/website_list.html'
     context_object_name = "website_list"
     paginate_by = 4
 
@@ -30,3 +30,7 @@ class WebsiteListView(ListView):
 
 class WebsiteDetailView(DetailView):
     model = Website
+
+class WebsiteCreateView(CreateView):
+    template_name = "scraper/website_form.html"
+    form_class = WebsiteModelForm

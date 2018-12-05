@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class WebsiteCategory(models.Model):
     name = models.CharField(max_length=1000)
@@ -21,6 +22,9 @@ class Website(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("WebsiteDetailView", kwargs={"pk": self.id})
 
 
 class WebPage(models.Model):
