@@ -7,6 +7,9 @@ class WebsiteCategory(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     count = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 class Website(models.Model):
     url = models.CharField(max_length=1000)
     title = models.CharField(max_length=1000)
@@ -16,6 +19,10 @@ class Website(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title
+
+
 class WebPage(models.Model):
     website = models.ForeignKey(Website, on_delete=models.CASCADE)
     url = models.CharField(max_length=1000, unique=True)
@@ -23,3 +30,6 @@ class WebPage(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=1000)
     meta_description = models.CharField(max_length=10000)
+
+    def __str__(self):
+        return self.website
