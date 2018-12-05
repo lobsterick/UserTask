@@ -31,6 +31,14 @@ class WebsiteListView(ListView):
 class WebsiteDetailView(DetailView):
     model = Website
 
+
 class WebsiteCreateView(CreateView):
     template_name = "scraper/website_form.html"
     form_class = WebsiteModelForm
+
+
+class WebsiteCategoryListView(ListView):
+    template_name = "scraper/category_list.html"
+    context_object_name = "category_list"
+    queryset = WebsiteCategory.objects.all().order_by("id")
+    paginate_by = 2
