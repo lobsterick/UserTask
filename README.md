@@ -13,9 +13,9 @@ http://127.0.0.1:8000/websites/?order_by=alexa_rank&category=Search&page=1
 ## Zadania
 1. Modele dla Website, Websitecategory oraz WebPage - ZROBIONE
 2. Widoki dla websites:
-- list view - W TRAKCIE
+- list view - ZROBIONO
 - detail view - ZROBIONO
-- create view
+- create view - ZROBIONO
 3. Widoki dla categories:
 - list view
 - create view
