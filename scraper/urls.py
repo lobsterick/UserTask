@@ -7,5 +7,4 @@ urlpatterns = [
     path("websites/create", WebsiteCreateView.as_view(), name="WebsiteCreateView"),
     path("categories/", WebsiteCategoryListView.as_view(), name="WebsiteCategoryListView"),
     path("categories/create", WebsiteCategoryCreateView.as_view(), name="WebsiteCategoryCreateView"),
-
 ]

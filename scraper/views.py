@@ -1,11 +1,14 @@
 from django.views.generic import ListView, DetailView, CreateView
 from .forms import *
 from django.urls import reverse_lazy
+from .tasks import *
+from django.http import HttpResponse
+
 
 
 class WebsiteListView(ListView):
     context_object_name = "website_list"
-    paginate_by = 4
+    paginate_by = 100
 
     def get_queryset(self):
         if self.request.GET.get('category'):
@@ -31,6 +34,12 @@ class WebsiteListView(ListView):
 class WebsiteDetailView(DetailView):
     model = Website
 
+    def post(self, request, pk):
+        print(pk)
+        scrapper_site.delay(pk)
+        return HttpResponse(f"Scrap task for id {pk} was send to Celery!")
+
+
 
 class WebsiteCreateView(CreateView):
     template_name = "scraper/website_form.html"
@@ -41,7 +50,7 @@ class WebsiteCategoryListView(ListView):
     template_name = "scraper/category_list.html"
     context_object_name = "category_list"
     queryset = WebsiteCategory.objects.all().order_by("id")
-    paginate_by = 2
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super(WebsiteCategoryListView, self).get_context_data(**kwargs)

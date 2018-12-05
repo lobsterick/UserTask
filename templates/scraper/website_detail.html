@@ -10,6 +10,9 @@
 <p>Description: {{ website.meta_description }}</p>
 <p>Added: {{ website.date_added }}</p>
 <p>Last updated: {{ website.date_updated }}</p>
-<button type="submit">Refresh</button><br>
+<form action="" method="post">
+    {% csrf_token %}
+    <button name="website_id" value="{{ website.id }}">Scan</button>
+</form>
 </body>
 </html>
