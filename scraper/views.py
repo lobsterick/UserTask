@@ -5,7 +5,7 @@ from .models import *
 class WebsiteListView(ListView):
     template_name = 'scraper/website_list.html'
     context_object_name = "website_list"
-    paginate_by = 3
+    paginate_by = 4
 
     def get_queryset(self):
         if self.request.GET.get('category'):

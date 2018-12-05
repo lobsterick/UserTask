@@ -10,10 +10,12 @@
 </head>
 <body>
 {% if website_list %}
-    <h1>All website's</h1>
-    <select>
+    <h1>All website's {% if category %}for category: {{ category }}{% endif %}</h1>
+    <select onchange="location = this.value;">
+    <option value="{% url "WebsiteListView" %}">----------</option>
+    <option value="{% url "WebsiteListView" %}{% if order_by %}?order_by={{ order_by }}{% endif %}{{ category.name }}">ALL DATABASE</option>
         {% for category in categories %}
-            <option value={{ category.id }}>{{ category.name }}</option>
+            <option value={% url "WebsiteListView" %}?category={{ category.name }}{% if order_by %}&order_by={{ order_by }}{% endif %}>{{ category.name }}</option>
         {% endfor %}
     </select>
     <table class="table" id="movie">
@@ -49,13 +51,13 @@
         <div class="pagination">
             <span class="page-links">
                 {% if page_obj.has_previous %}
-                    <a href="/websites/?page={{ page_obj.previous_page_number }}{% if order_by %}&order_by={{ order_by }}{% endif %}">previous</a>
+                    <a href="/websites/?page={{ page_obj.previous_page_number }}{% if order_by %}&order_by={{ order_by }}{% endif %}{% if category %}&category={{ category }}{% endif %}">previous</a>
                 {% endif %}
                 <span class="page-current">
                     Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                 </span>
                 {% if page_obj.has_next %}
-                    <a href="/websites/?page={{ page_obj.next_page_number }}{% if order_by %}&order_by={{ order_by }}{% endif %}">next</a>
+                    <a href="/websites/?page={{ page_obj.next_page_number }}{% if order_by %}&order_by={{ order_by }}{% endif %}{% if category %}&category={{ category }}{% endif %}">next</a>
                 {% endif %}
             </span>
         </div>
