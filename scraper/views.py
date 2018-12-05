@@ -35,7 +35,6 @@ class WebsiteDetailView(DetailView):
     model = Website
 
     def post(self, request, pk):
-        print(pk)
         scrapper_site.delay(pk)
         return HttpResponse(f"Scrap task for id {pk} was send to Celery!")
 
