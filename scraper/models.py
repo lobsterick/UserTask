@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django_counter_field_py3 import CounterField, CounterMixin, connect_counter
 
 
 class WebsiteCategory(models.Model):

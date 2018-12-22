@@ -5,7 +5,6 @@ from .tasks import *
 from django.http import HttpResponse
 
 
-
 class WebsiteListView(ListView):
     context_object_name = "website_list"
     paginate_by = 100
@@ -37,7 +36,6 @@ class WebsiteDetailView(DetailView):
     def post(self, request, pk):
         scrapper_site.delay(pk)
         return HttpResponse(f"Scrap task for id {pk} was send to Celery!")
-
 
 
 class WebsiteCreateView(CreateView):
