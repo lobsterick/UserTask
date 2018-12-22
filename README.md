@@ -5,7 +5,7 @@ Simple implementation of web crawler in Django Framework. Because ... why not?
 Inside this project, you will find a Django Web Application, containing webscraper operating on 1.000.000 most popular pages, according to [Alexa](https://www.alexa.com/).
 Main features of this app are:
 * scraping all websites, that are inside each of 1.000.000 sites
-* go to every url in scrapped website to get another URL's
+* possibility of refreshing choosen website's URL base
 
 ## How to use?
 1. Start Django localserver (something like `python manage.py runserver` - more on that in the [Django tutorial](https://docs.djangoproject.com/en/2.1/intro/tutorial01/))
